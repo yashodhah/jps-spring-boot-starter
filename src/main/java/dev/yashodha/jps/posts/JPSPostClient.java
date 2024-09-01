@@ -12,6 +12,8 @@ public class JPSPostClient implements JPSClient<Post> {
 
     private final RestClient restClient;
 
+    private final String baseResourceUri =  "/posts";
+
     public JPSPostClient(@Qualifier("JPSRestClient") RestClient restClient) {
         this.restClient = restClient;
     }
@@ -19,15 +21,16 @@ public class JPSPostClient implements JPSClient<Post> {
     @Override
     public List<Post> findAll() {
         return restClient.get()
-                .uri("/posts")
+                .uri(baseResourceUri + "")
                 .retrieve()
-                .body(new ParameterizedTypeReference<>() {});
+                .body(new ParameterizedTypeReference<>() {
+                });
     }
 
     @Override
     public Post findById(Integer id) {
         return restClient.get()
-                .uri("/posts/{id}", id)
+                .uri(baseResourceUri + "/{id}", id)
                 .retrieve()
                 .body(Post.class);
     }
@@ -35,7 +38,7 @@ public class JPSPostClient implements JPSClient<Post> {
     @Override
     public Post create(Post post) {
         return restClient.post()
-                .uri("/todos")
+                .uri(baseResourceUri + "")
                 .body(post)
                 .retrieve()
                 .body(Post.class);

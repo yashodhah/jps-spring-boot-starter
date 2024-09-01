@@ -19,16 +19,15 @@ public class JPSAutoConfiguration {
         this.jpsProperties = jpsProperties;
     }
 
-    @Bean
-    JPSPostClient jpsPostClient(RestClient restClient){
-        return new JPSPostClient(restClient);
-    }
-
-
     @Bean("JPSRestClient")
     RestClient restClient(RestClient.Builder builder){
         return builder
                 .baseUrl(jpsProperties.baseURL())
                 .build();
+    }
+
+    @Bean
+    JPSPostClient jpsPostClient(RestClient restClient){
+        return new JPSPostClient(restClient);
     }
 }

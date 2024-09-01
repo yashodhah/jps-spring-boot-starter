@@ -1,7 +1,6 @@
 package dev.yashodha.jps.posts;
 
 import dev.yashodha.jps.JPSAutoConfiguration;
-import dev.yashodha.jps.JPSClient;
 import dev.yashodha.jps.JPSProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
